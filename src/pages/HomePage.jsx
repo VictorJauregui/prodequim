@@ -43,7 +43,7 @@ const HomePage = () => {
           {
             ordersInProcess.map((order)=>{
               return (
-                <CardOrder setopenModal={setopenModal} order={order} openModal={openModal} setCurrentOrder={setCurrentOrder} />
+                <CardOrder setopenModal={setopenModal} order={order} openModal={openModal} setCurrentOrder={setCurrentOrder} ordersInProcess={ordersInProcess} />
 
               )
             })

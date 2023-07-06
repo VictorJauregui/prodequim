@@ -67,7 +67,21 @@ useEffect(() => {
       body: JSON.stringify({ orderId, newValue }),
     });
     const data = await res.json();
-    console.log(data)
+    console.log(data.orderChanged)
+
+  };
+
+  const orderFinished = async (orderId, newValue) => {
+    console.log(orderId, newValue)
+    const res = await fetch("http://localhost:4008/order/order-finished", {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ orderId, newValue }),
+    });
+    const data = await res.json();
+    console.log(data.orderChanged)
 
   };
 
@@ -84,7 +98,8 @@ useEffect(() => {
         dataCustomers, 
         setDataCustomers,
         dataOrders,
-        updateOrder
+        updateOrder,
+        orderFinished
     }}>
         {children}
     </orderContext.Provider>

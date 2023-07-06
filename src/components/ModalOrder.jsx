@@ -1,15 +1,19 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import close from '../assets/close.png'
 import logoTransparent from '../assets/logo-transparent.png'
 import OrderInformation from './OrderInformation'
+import orderContext from '../context/orderContext/OrderContext'
 
 const ModalOrder = ({setopenModal, order}) => {
+  const {orderFinished} = useContext(orderContext)
+
+  const handleFinishOrder = () => {
+    orderFinished(order._id, {...order, finished: true})
+  }
+
+  console.log(order._id)
 
   
-
-
-
-
   return (
     <div>
       <div className="fixed inset-0 overflow-y-auto bg-black/70 z-30">
@@ -50,9 +54,7 @@ const ModalOrder = ({setopenModal, order}) => {
                 </div>
                 <div className='flex items-center justify-end gap-6 w-full mr-4'>
                     <button className='bg-red-500 py-2 px-5 rounded text-white'>Eliminar</button>
-                    <button className='bg-secondary py-2 px-5 rounded text-white'>Editar</button>
-                    <button className='bg-green-600 py-2 px-5 rounded text-white'>Finalizar</button>
-
+                    <button className='bg-green-600 py-2 px-5 rounded text-white' onClick={handleFinishOrder}>Finalizar</button>
                 </div>
             </div>
           </div>
