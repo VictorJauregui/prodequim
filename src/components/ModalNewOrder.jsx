@@ -4,19 +4,21 @@ import logoTransparent from '../assets/logo-transparent.png';
 import orderContext from '../context/orderContext/OrderContext';
 
 const ModalNewOrder = ({setopenModalOrder}) => {
-    const {newOrderByServidor} = useContext(orderContext)
-  const [productos, setProductos] = useState([{ producto: '', cantidad: '' }]);
+
+    const {newOrderByServidor, dataCustomers} = useContext(orderContext)
+  const [productos, setProductos] = useState([{ producto: '', cantidad: '', estado: 'notFinished' }]);
   const [newOrder, setNewOrder] = useState({
     customer: "El jamon",
     order: productos,
+    finished: false
   })
 
 
   
   const handleAddProducto = (e) => {
     e.preventDefault();
-    setProductos([...productos, { producto: '', cantidad: '' }]);
-    setNewOrder({ ...newOrder, order: [...productos, { producto: '', cantidad: '' }] });
+    setProductos([...productos, { producto: '', cantidad: '', estado: 'notFinished'  }]);
+    setNewOrder({ ...newOrder, order: [...productos, { producto: '', cantidad: '', estado: 'notFinished'  }] });
   };
   
   const handleProductoChange = (index, e) => {
@@ -57,9 +59,15 @@ const ModalNewOrder = ({setopenModalOrder}) => {
               <form className="flex flex-col mx-4">
                 <label className="text-primary font-bold text-xl">Cliente</label>
                 <select className="bg-gray-200 full h-[2rem] rounded" name="customer" onChange={handleNewOrder}>
-                  <option name="El jamón">El jamón</option>
-                  <option name="Cabeco">Cabeco</option>
-                  <option name="Servicenca">Servicenca</option>
+                {
+                  dataCustomers.map((customer)=>{
+                    return(
+                      <option className='text-white' >{customer.customer}</option>
+
+
+                    )
+                  })
+                }
                 </select>
                 <p className="text-primary font-bold mt-6 text-xl">Pedido</p>
                 <div className="flex w-full mx-5 mt-5 gap-2">

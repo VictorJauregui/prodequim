@@ -1,21 +1,14 @@
 import React, { useState } from 'react'
-import eljamon from '../assets/eljamon.png'
 import close from '../assets/close.png'
-import finish from '../assets/finish.png'
-import finishDone from '../assets/finishDone.png'
 import logoTransparent from '../assets/logo-transparent.png'
+import OrderInformation from './OrderInformation'
 
-const ModalOrder = ({setopenModal}) => {
-    const [finished, setfinished] = useState(false)
+const ModalOrder = ({setopenModal, order}) => {
 
   
 
-    const TaskFinished = () => {
-        setfinished(true)
-    }
-    const TaskNotFinished = () => {
-        setfinished(false)
-    }
+
+
 
   return (
     <div>
@@ -27,11 +20,11 @@ const ModalOrder = ({setopenModal}) => {
             </div>
             <div className='flex w-full'>
                 <div className='w-1/2 m-4'>
-                    <p className='text-4xl font-bold text-primary'>El jamón</p>
+                    <p className='text-4xl font-bold text-primary'>{order.customerId.customer}</p>
                     <p className='font-bold text-gray-500 mt-2'>Fecha pedido: <span>23-10-2023</span></p>
                 </div>
                 <div className='w-1/2 flex justify-end items-center m-4'>
-                    <img className='max-h-20 min-h-20' src={eljamon} alt="" />
+                    <img className='w-40 h-20 ' src={order.customerId.image} alt="" />
                 </div>
             </div>
             <p className='text-primary text-2xl ml-4 mt-4'>Detalles del pedido</p>
@@ -40,43 +33,14 @@ const ModalOrder = ({setopenModal}) => {
                     <p className='w-3/5'>Producto</p>
                     <p className='w-2/5'>Cantidad</p>
                 </div>
-                <div className='flex w-full text-primary py-2 border-b border-gray-300 items-center'>
-                    <p className=' w-3/5'>Detergente de máquinas</p>
-                    <p className='w-1/5'>144</p>
+                <div className=' w-full  text-primary py-2  items-center'>
                     {
-                        !finished ?
-                        <img className='max-h-5 cursor-pointer' src={finish} alt="finished" onClick={TaskFinished} />
-                        : 
-                        <div className='flex items-center gap-3'>
-                            <img className='max-h-5 cursor-pointer' src={finishDone} alt="finished" onClick={TaskNotFinished} />
-                            <p>Terminado</p>
-                        </div>
-                    }
-                </div>
-                <div className='flex w-full text-primary py-2 border-b border-gray-300 items-center'>
-                    <p className=' w-3/5'>Gel de manos</p>
-                    <p className='w-1/5'>144</p>
-                    {
-                        !finished ?
-                        <img className='max-h-5 cursor-pointer' src={finish} alt="finished" onClick={TaskFinished} />
-                        : 
-                        <div className='flex items-center gap-3'>
-                            <img className='max-h-5 cursor-pointer' src={finishDone} alt="finished" onClick={TaskNotFinished} />
-                            <p>Terminado</p>
-                        </div>
-                    }
-                </div>
-                <div className='flex w-full text-primary py-2 border-b border-gray-300 items-center'>
-                    <p className=' w-3/5'>Limpiacristales</p>
-                    <p className='w-1/5'>144</p>
-                    {
-                        !finished ?
-                        <img className='max-h-5 cursor-pointer' src={finish} alt="finished" onClick={TaskFinished} />
-                        : 
-                        <div className='flex items-center gap-3'>
-                            <img className='max-h-5 cursor-pointer' src={finishDone} alt="finished" onClick={TaskNotFinished} />
-                            <p>Terminado</p>
-                        </div>
+                        order.order.map((orde) => {
+                            return (
+                                <OrderInformation orde={orde} order={order}  />
+                                )
+                            })
+
                     }
                 </div>
             </div>

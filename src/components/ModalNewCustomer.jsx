@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import close from '../assets/close.png'
 import orderContext from '../context/orderContext/OrderContext';
 
-const ModalNewCustomer = () => {
+const ModalNewCustomer = ({setOpenModal}) => {
     const { addCustomer } = useContext(orderContext)
     const [previewImg, setPreviewImg] = useState(null);
     const [newCustomer, setNewCustomer] = useState({
@@ -30,7 +30,10 @@ const ModalNewCustomer = () => {
         setNewCustomer({ ...newCustomer, [e.target.name]: e.target.value })
     }
 
-
+    useEffect(() => {
+      
+    }, [setNewCustomer])
+    
 
         const handleSubmit = (e) => {
             e.preventDefault()
@@ -43,7 +46,9 @@ const ModalNewCustomer = () => {
             formData.append("image", newCustomer.image)
             
             addCustomer(formData)
+            setOpenModal(false)
         }
+
 
   return (
     <div>
@@ -53,7 +58,7 @@ const ModalNewCustomer = () => {
           <div className="flex ml-4 mb-4">
               <p className="text-2xl font-bold w-1/2 text-primary">NUEVO CLIENTE</p>
               <div className="flex justify-end w-1/2">
-                <img className="w-4 h-4  mx-2 cursor-pointer" src={close} alt="" />
+                <img className="w-4 h-4  mx-2 cursor-pointer" src={close} onClick={()=>setOpenModal(false)} alt="" />
               </div>
             </div>
             <form encType="multipart/form-data" className='mx-4' >
@@ -101,7 +106,7 @@ const ModalNewCustomer = () => {
                         {
                             !previewImg ?
                             <>
-                            <div className=' h-[10rem] rounded cursor-pointer bg-gray-200 flex items-center justify-center border-dotted border-2 border-primary'>
+                            <div className=' h-[10rem] rounded cursor-pointer bg-gray-200 flex items-center justify-center border-dashed border-2 border-primary'>
                                 <p className='text-gray-400 font-semibold'>Subir Logo</p>
                             </div>
                             <input type="file" className='hidden' 
