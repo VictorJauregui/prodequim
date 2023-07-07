@@ -14,7 +14,6 @@ const ModalOrder = ({setopenModal, order, orderFinished}) => {
     
   }
 
-  console.log(order._id)
 
   
   return (

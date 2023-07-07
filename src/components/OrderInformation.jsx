@@ -21,6 +21,8 @@ const OrderInformation = ({orde, order}) => {
         setfinished(false)
     }
 
+    console.log(orde)
+
     
   return (
         <div className='flex border-b border-gray-300 py-2'>

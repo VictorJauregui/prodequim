@@ -5,7 +5,7 @@ import orderContext from '../../context/orderContext/OrderContext';
 
 const ModalNewOrder = ({setopenModalOrder}) => {
 
-    const {newOrderByServidor, dataCustomers} = useContext(orderContext)
+    const {newOrderByServidor, dataCustomers, dataProducts} = useContext(orderContext)
   const [productos, setProductos] = useState([{ producto: '', cantidad: '', estado: 'notFinished' }]);
   const [newOrder, setNewOrder] = useState({
     customer: "El jamon",
@@ -13,6 +13,7 @@ const ModalNewOrder = ({setopenModalOrder}) => {
     finished: false
   })
 
+  console.log(dataProducts)
 
   
   const handleAddProducto = (e) => {
@@ -76,13 +77,21 @@ const ModalNewOrder = ({setopenModalOrder}) => {
                 </div>
                 {productos.map((producto, index) => (
                   <div className="flex w-full ml-5 mt-5 gap-2" key={index}>
-                    <input
+                    <select
                       className="w-[84%] border-b border-gray-400 focus:outline-none"
                       type="text"
                       placeholder="Detergente"
                       value={producto.producto}
                       onChange={(e) => handleProductoChange(index, e)}
-                    />
+                    >
+                      {
+                        dataProducts.map((product) => {
+                          return (
+                            <option>{product.product}</option>
+                          )
+                        })
+                      }
+                    </select>
                     <input
                       className="w-[10%] mr-5 border-b border-gray-400 focus:outline-none"
                       type="text"

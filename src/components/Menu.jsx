@@ -1,25 +1,18 @@
 import React from 'react'
 import logo from '../assets/logo.png'
-import { NavLink } from 'react-router-dom'
+import { NavLink, useLocation } from 'react-router-dom'
 
 const Menu = () => {
+  const location = useLocation();
   return (
     <div className='bg-white flex items-center'>
       <img className='w-48' src={logo} alt="" />
       <div className='w-full'>
         <div className='flex justify-end gap-10 text-2xl mr-10 text-primary'>
-          <NavLink to="/">
-            <p className='cursor-pointer'>Pedidos</p>
-          </NavLink>
-          <NavLink to="/fabrication">
-            <p className='cursor-pointer'>Fabricación</p>
-          </NavLink>
-          <NavLink to="/customer">
-            <p className='cursor-pointer'>Clientes</p>
-          </NavLink>
-          <NavLink to="/products">
-            <p className='cursor-pointer'>Productos</p>
-          </NavLink>
+          <NavLink to="/" className={location.pathname === "/" ? "font-bold border-b-2 border-primary" : ""}>Pedidos</NavLink>
+          <NavLink to="/fabrication" className={location.pathname === "/fabrication" ? "font-bold border-b-2 border-primary" : ""}>Fabricación</NavLink>
+          <NavLink to="/customer" className={location.pathname === "/customer" ? "font-bold border-b-2 border-primary" : ""}>Clientes</NavLink>
+          <NavLink to="/products" className={location.pathname === "/products" ? "font-bold border-b-2 border-primary" : ""}>Productos</NavLink>
         </div>
       </div>
     </div>

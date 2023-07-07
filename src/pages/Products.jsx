@@ -11,7 +11,7 @@ const Products = () => {
 
     console.log(dataProducts)
   return (
-    <div className='bg-primary h-screen'>
+    <div className='bg-primary min-h-screen pb-20'>
       <Menu />
       <div className='flex mt-10 text-xl mx-20'>
         <p className='text-white w-[10%] cursor-pointer'>Productos</p>
