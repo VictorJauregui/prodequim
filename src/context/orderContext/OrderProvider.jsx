@@ -6,6 +6,7 @@ const OrderProvider = ({children}) => {
     const [order, setOrder] = useState()
     const [dataCustomers, setDataCustomers] = useState([])
     const [dataOrders, setDataOrders] = useState([])
+    const [dataProducts, setDataProducts] = useState([])
 
 
 const newOrderByServidor = async (newOrder) => {
@@ -34,15 +35,43 @@ const addCustomer = async (formData) => {
     }
 }
 
+const addProduct = async (formData) => {
+    const res = await fetch("http://localhost:4008/product/add-new-product", {
+        method: "POST",
+        body: formData
+    })
+    const data = await res.json()
+    console.log(data)
+    if(data.ok){
+        toast.success("Producto subido con éxito")
+    } else{
+      toast.error("Ha ocurrido un error")
+    }
+}
+
 const getAllCustomer = async () => {
     const res = await fetch("http://localhost:4008/customer/customers")
     const data = await res.json()
     setDataCustomers(data.customers)
 }
 
+
 useEffect(() => {
-    getAllCustomer();
+  getAllCustomer();
+}, []);
+
+
+const getAllProducts = async () => {
+  const res = await fetch("http://localhost:4008/product/products")
+  const data = await res.json()
+  setDataProducts(data.products)
+}
+
+
+useEffect(() => {
+    getAllProducts();
   }, []);
+  
 
 
 
@@ -56,7 +85,7 @@ useEffect(() => {
     getAllOrders();
   }, []);
 
-  
+
   const updateOrder = async (orderId, newValue) => {
     console.log(orderId, newValue)
     const res = await fetch("http://localhost:4008/order/update-order", {
@@ -82,9 +111,11 @@ useEffect(() => {
     });
     const data = await res.json();
     console.log(data.orderChanged)
+    if(data.ok){
+      toast.success('El pedido ha sido archivado con éxito. Puedes verlo en "pedidos finalizados"')
+  }
 
   };
-
 
 
 
@@ -99,7 +130,9 @@ useEffect(() => {
         setDataCustomers,
         dataOrders,
         updateOrder,
-        orderFinished
+        orderFinished,
+        addProduct,
+        dataProducts
     }}>
         {children}
     </orderContext.Provider>

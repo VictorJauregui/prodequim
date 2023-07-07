@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react';
-import close from '../assets/close.png';
-import logoTransparent from '../assets/logo-transparent.png';
-import orderContext from '../context/orderContext/OrderContext';
+import close from '../../assets/close.png';
+import logoTransparent from '../../assets/logo-transparent.png';
+import orderContext from '../../context/orderContext/OrderContext';
 
 const ModalNewOrder = ({setopenModalOrder}) => {
 

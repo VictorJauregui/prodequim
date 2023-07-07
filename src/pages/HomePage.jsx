@@ -2,9 +2,10 @@ import React, { useContext, useState } from 'react'
 import Menu from '../components/Menu'
 import plus from '../assets/plus.png'
 import CardOrder from '../components/CardOrder'
-import ModalOrder from '../components/ModalOrder'
-import ModalNewOrder from '../components/ModalNewOrder'
+import ModalOrder from '../components/Modals/ModalOrder'
+import ModalNewOrder from '../components/Modals/ModalNewOrder'
 import orderContext from '../context/orderContext/OrderContext'
+import ModalFinishOrder from '../components/Modals/ModalFinishOrder'
 
 const HomePage = () => {
   const [openModal, setopenModal] = useState(false)
@@ -20,6 +21,8 @@ const HomePage = () => {
   const orderFinished = dataOrders.filter((order) => {
     return order.finished === true
   })
+
+
 
 
 
@@ -65,7 +68,7 @@ const HomePage = () => {
         {
           orderFinished.map((order)=>{
             return (
-              <CardOrder setopenModal={setopenModal} order={order} openModal={openModal} setCurrentOrder={setCurrentOrder} />
+              <CardOrder setopenModal={setopenModal} order={order} openModal={openModal} setCurrentOrder={setCurrentOrder}  />
 
             )
           })
@@ -77,10 +80,11 @@ const HomePage = () => {
         }
         {
         openModal &&
-        <ModalOrder setopenModal={setopenModal} order={currentOrder} />
+        <ModalOrder setopenModal={setopenModal} order={currentOrder} orderFinished={orderFinished} />
         }
       </div>
       }
+      
       
       
     </div>

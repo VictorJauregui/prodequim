@@ -2,9 +2,9 @@ import React, { useContext, useState } from "react";
 import Menu from "../components/Menu";
 import plus from '../assets/plus.png'
 import CardCustomer from "../components/CardCustomer";
-import ModalNewCustomer from "../components/ModalNewCustomer";
+import ModalNewCustomer from "../components/Modals/ModalNewCustomer";
 import orderContext from "../context/orderContext/OrderContext";
-import ModalInfoCustomer from "../components/ModalInfoCustomer";
+import ModalInfoCustomer from "../components/Modals/ModalInfoCustomer";
 
 const CustomerPage = () => {
   const {dataCustomers} = useContext(orderContext)

@@ -11,8 +11,14 @@ const Menu = () => {
           <NavLink to="/">
             <p className='cursor-pointer'>Pedidos</p>
           </NavLink>
+          <NavLink to="/fabrication">
+            <p className='cursor-pointer'>Fabricación</p>
+          </NavLink>
           <NavLink to="/customer">
             <p className='cursor-pointer'>Clientes</p>
+          </NavLink>
+          <NavLink to="/products">
+            <p className='cursor-pointer'>Productos</p>
           </NavLink>
         </div>
       </div>

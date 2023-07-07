@@ -1,14 +1,17 @@
 import React, { useContext, useState } from 'react'
-import close from '../assets/close.png'
-import logoTransparent from '../assets/logo-transparent.png'
-import OrderInformation from './OrderInformation'
-import orderContext from '../context/orderContext/OrderContext'
+import close from '../../assets/close.png'
+import logoTransparent from '../../assets/logo-transparent.png'
+import OrderInformation from './../OrderInformation'
+import ModalFinishOrder from './ModalFinishOrder'
 
-const ModalOrder = ({setopenModal, order}) => {
-  const {orderFinished} = useContext(orderContext)
+const ModalOrder = ({setopenModal, order, orderFinished}) => {
+
+  const [openModalFinishOrder, setOpenModalFinishOrder] = useState(false)
 
   const handleFinishOrder = () => {
-    orderFinished(order._id, {...order, finished: true})
+    setOpenModalFinishOrder(true)
+
+    
   }
 
   console.log(order._id)
@@ -48,6 +51,8 @@ const ModalOrder = ({setopenModal, order}) => {
                     }
                 </div>
             </div>
+            {
+              !orderFinished ?
             <div className='flex mb-4'>
                 <div>
                     <img className='max-h-28' src={logoTransparent} alt="" />
@@ -56,7 +61,20 @@ const ModalOrder = ({setopenModal, order}) => {
                     <button className='bg-red-500 py-2 px-5 rounded text-white'>Eliminar</button>
                     <button className='bg-green-600 py-2 px-5 rounded text-white' onClick={handleFinishOrder}>Finalizar</button>
                 </div>
+            </div> :
+            <div className='flex mb-4'>
+              <div>
+                  <img className='max-h-28' src={logoTransparent} alt="" />
+              </div>
+              <div className='flex items-center justify-end gap-6 w-full mr-4'>
+                  <p className='text-gray-500'>Este pedido ha sido finalizado</p>
+              </div>
             </div>
+            }
+            {
+              openModalFinishOrder &&
+              <ModalFinishOrder order={order} setOpenModalFinishOrder={setOpenModalFinishOrder} setopenModal={setopenModal}/>
+            }
           </div>
         </div>
       </div>

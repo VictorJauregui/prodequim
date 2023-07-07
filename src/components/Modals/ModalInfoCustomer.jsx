@@ -1,6 +1,6 @@
 import React from 'react'
-import close from '../assets/close.png'
-import eljamon from '../assets/eljamon.png'
+import close from '../../assets/close.png'
+import eljamon from '../../assets/eljamon.png'
 
 const ModalInfoCustomer = ({setOpenInfoModal, currentCustomer}) => {
 

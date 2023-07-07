@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
-import close from '../assets/close.png'
-import orderContext from '../context/orderContext/OrderContext';
+import close from '../../assets/close.png'
+import orderContext from '../../context/orderContext/OrderContext';
 
 const ModalNewCustomer = ({setOpenModal}) => {
     const { addCustomer } = useContext(orderContext)
