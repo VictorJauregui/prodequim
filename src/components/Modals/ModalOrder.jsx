@@ -3,10 +3,12 @@ import close from '../../assets/close.png'
 import logoTransparent from '../../assets/logo-transparent.png'
 import OrderInformation from './../OrderInformation'
 import ModalFinishOrder from './ModalFinishOrder'
+import orderContext from '../../context/orderContext/OrderContext'
 
 const ModalOrder = ({setopenModal, order, orderFinished}) => {
 
   const [openModalFinishOrder, setOpenModalFinishOrder] = useState(false)
+
 
   const handleFinishOrder = () => {
     setOpenModalFinishOrder(true)

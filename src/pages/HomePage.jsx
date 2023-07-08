@@ -5,7 +5,6 @@ import CardOrder from '../components/CardOrder'
 import ModalOrder from '../components/Modals/ModalOrder'
 import ModalNewOrder from '../components/Modals/ModalNewOrder'
 import orderContext from '../context/orderContext/OrderContext'
-import ModalFinishOrder from '../components/Modals/ModalFinishOrder'
 
 const HomePage = () => {
   const [openModal, setopenModal] = useState(false)
@@ -23,26 +22,22 @@ const HomePage = () => {
   })
 
 
-
-
-
-
   return (
-    <div className='bg-primary h-screen'>
+    <div className='bg-primary min-h-screen pb-12'>
       <Menu />
-      <div className='flex mt-10 text-xl mx-20'>
-        <p className={!inProcess ? 'text-white w-[10%] cursor-pointer' : 'w-[10%] text-2xl font-bold  text-secondary   cursor-pointer'} onClick={()=>setInprocess(true)}>En proceso</p>
-        <p className={inProcess ? 'text-white w-[10%] cursor-pointer' : 'w-[10%] text-2xl font-bold  text-secondary   cursor-pointer'} onClick={()=>setInprocess(false)}>Finalizados</p>
+      <div className='flex mt-10 text-xl mx-4 md:mx-20'>
+        <p className={!inProcess ? 'text-white w-[10%] cursor-pointer' : ' text-2xl font-bold  text-secondary   cursor-pointer'} onClick={()=>setInprocess(true)}>En proceso</p>
+        <p className={inProcess ? 'text-white w-[10%] cursor-pointer' : ' text-2xl font-bold  text-secondary   cursor-pointer'} onClick={()=>setInprocess(false)}>Finalizados</p>
         <div className='w-full flex justify-end '>
-          <div onClick={()=>setopenModalOrder(true)}  className='flex justify-center w-48 bg-secondary rounded h-[2rem] items-center text-primary font-bold cursor-pointer gap-2'>
+          <div onClick={()=>setopenModalOrder(true)}  className='flex justify-center px-2 bg-secondary rounded h-[2rem] items-center text-primary font-bold cursor-pointer gap-2'>
             <img className='w-5' src={plus} alt="" />
-            <p>Nuevo pedido</p>
+            <p className='flex '>Nuevo&nbsp;<span className='hidden md:flex '>pedido</span> </p>
           </div>
         </div>
       </div>
       {
         inProcess ?
-        <div  className='grid grid-cols-7 px-20 m gap-6 mt-10 w-full '>
+        <div  className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 px-4 md:px-20  gap-6 mt-10 w-full '>
           {
             ordersInProcess.map((order)=>{
               return (
@@ -64,7 +59,7 @@ const HomePage = () => {
         
         :
 
-        <div  className='grid grid-cols-7 px-20 m gap-6 mt-10 w-full '>
+        <div  className='grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-6 px-20 m gap-6 mt-10 w-full '>
         {
           orderFinished.map((order)=>{
             return (

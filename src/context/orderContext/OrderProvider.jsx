@@ -17,9 +17,10 @@ const newOrderByServidor = async (newOrder) => {
         },
         body: JSON.stringify(newOrder)
     });
-
+    
     const data = await res.json()
     console.log(data)
+    setDataOrders([...dataOrders, data.newOrder])
 
 }
 
@@ -43,10 +44,12 @@ const addProduct = async (formData) => {
     const data = await res.json()
     console.log(data)
     if(data.ok){
+        
         toast.success("Producto subido con éxito")
     } else{
       toast.error("Ha ocurrido un error")
     }
+
 }
 
 const getAllCustomer = async () => {
@@ -97,6 +100,14 @@ useEffect(() => {
     });
     const data = await res.json();
     console.log(data.orderChanged)
+    const updateOrders = dataOrders.map((order) => {
+      if(order._id === data.orderChanged._id){
+        return data.orderChanged
+      } else {
+        return order}
+  
+      })
+      setDataOrders(updateOrders)
 
   };
 
@@ -114,6 +125,14 @@ useEffect(() => {
     if(data.ok){
       toast.success('El pedido ha sido archivado con éxito. Puedes verlo en "pedidos finalizados"')
   }
+  const updateOrders = dataOrders.map((order) => {
+    if(order._id === data.orderChanged._id){
+      return data.orderChanged
+    } else {
+      return order}
+
+    })
+    setDataOrders(updateOrders)
 
   };
 
