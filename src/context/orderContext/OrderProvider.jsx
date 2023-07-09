@@ -9,28 +9,34 @@ const OrderProvider = ({ children }) => {
   const [dataProducts, setDataProducts] = useState([]);
 
   const newOrderByServidor = async (newOrder) => {
-    const res = await fetch("http://localhost:4008/order/add-new-order", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newOrder),
-    });
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/order/add-new-order",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newOrder),
+      }
+    );
 
     const data = await res.json();
-    if (data.ok){
-      toast.success("Tu pedido ha sido creado con éxito")
+    if (data.ok) {
+      toast.success("Tu pedido ha sido creado con éxito");
     } else {
-      toast.error("Algo salió mal. Inténtalo de nuevo")
+      toast.error("Algo salió mal. Inténtalo de nuevo");
     }
     setDataOrders([...dataOrders, data.newOrder]);
   };
 
   const addCustomer = async (formData) => {
-    const res = await fetch("http://localhost:4008/customer/add-new-customer", {
-      method: "POST",
-      body: formData,
-    });
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/customer/add-new-customer",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const data = await res.json();
 
     if (data.ok) {
@@ -39,10 +45,13 @@ const OrderProvider = ({ children }) => {
   };
 
   const addProduct = async (formData) => {
-    const res = await fetch("http://localhost:4008/product/add-new-product", {
-      method: "POST",
-      body: formData,
-    });
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/product/add-new-product",
+      {
+        method: "POST",
+        body: formData,
+      }
+    );
     const data = await res.json();
 
     if (data.ok) {
@@ -53,7 +62,9 @@ const OrderProvider = ({ children }) => {
   };
 
   const getAllCustomer = async () => {
-    const res = await fetch("http://localhost:4008/customer/customers");
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/customer/customers"
+    );
     const data = await res.json();
     setDataCustomers(data.customers);
   };
@@ -63,7 +74,9 @@ const OrderProvider = ({ children }) => {
   }, []);
 
   const getAllProducts = async () => {
-    const res = await fetch("http://localhost:4008/product/products");
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/product/products"
+    );
     const data = await res.json();
     setDataProducts(data.products);
   };
@@ -73,7 +86,9 @@ const OrderProvider = ({ children }) => {
   }, []);
 
   const getAllOrders = async () => {
-    const res = await fetch("http://localhost:4008/order/orders");
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/order/orders"
+    );
     const data = await res.json();
     setDataOrders(data.orders);
   };
@@ -83,13 +98,16 @@ const OrderProvider = ({ children }) => {
   }, []);
 
   const updateOrder = async (orderId, newValue) => {
-    const res = await fetch("http://localhost:4008/order/update-order", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ orderId, newValue }),
-    });
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/order/update-order",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId, newValue }),
+      }
+    );
     const data = await res.json();
 
     const updateOrders = dataOrders.map((order) => {
@@ -103,15 +121,18 @@ const OrderProvider = ({ children }) => {
   };
 
   const orderFinished = async (orderId, newValue) => {
-    const res = await fetch("http://localhost:4008/order/order-finished", {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ orderId, newValue }),
-    });
+    const res = await fetch(
+      "https://testback-production-d0d3.up.railway.app/order/order-finished",
+      {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ orderId, newValue }),
+      }
+    );
     const data = await res.json();
-  
+
     if (data.ok) {
       toast.success(
         'El pedido ha sido archivado con éxito. Puedes verlo en "pedidos finalizados"'
@@ -127,20 +148,19 @@ const OrderProvider = ({ children }) => {
     setDataOrders(updateOrders);
   };
 
-
   const deleteOrder = async (id) => {
-    const res = await fetch(`http://localhost:4008/order/delete-order/${id}`, {
-      method: "DELETE",
-    });
+    const res = await fetch(
+      `https://testback-production-d0d3.up.railway.app/order/delete-order/${id}`,
+      {
+        method: "DELETE",
+      }
+    );
     const data = await res.json();
     const ordersFiltered = dataOrders.filter((ord) => {
-      return ord._id !== data.id
-    })
-    setDataOrders(ordersFiltered)
-
-  }
-
-
+      return ord._id !== data.id;
+    });
+    setDataOrders(ordersFiltered);
+  };
 
   return (
     <orderContext.Provider
@@ -156,7 +176,7 @@ const OrderProvider = ({ children }) => {
         orderFinished,
         addProduct,
         dataProducts,
-        deleteOrder
+        deleteOrder,
       }}
     >
       {children}

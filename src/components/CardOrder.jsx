@@ -1,21 +1,13 @@
-import React, { useState, useEffect } from "react";
-import noStarted from "../assets/noStarted.png";
 import inProduction from "../assets/inProduction.png";
 import finished from "../assets/finished.png";
 
 const CardOrder = ({
   setopenModal,
   order,
-  openModal,
   setCurrentOrder,
   ordersInProcess,
 }) => {
-  const [fechaPedido, setFechaPedido] = useState("");
 
-  useEffect(() => {
-    const fechaActual = new Date().toLocaleDateString();
-    setFechaPedido(fechaActual);
-  }, []);
 
   const openOrderModal = () => {
     setopenModal(true);

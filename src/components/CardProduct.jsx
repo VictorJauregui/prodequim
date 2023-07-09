@@ -1,5 +1,4 @@
 import React from 'react'
-import detergente from '../assets/detergente.png'
 
 const CardProduct = ({product}) => {
   return (

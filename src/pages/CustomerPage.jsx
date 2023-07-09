@@ -23,7 +23,7 @@ const CustomerPage = () => {
           <div  className='flex justify-center px-2 bg-secondary rounded h-[2rem] items-center text-primary font-bold cursor-pointer gap-2' onClick={()=>setOpenModal(true)}>
             <img className='w-5' src={plus} alt="" />
             <p className="flex ">
-              Nuevo&nbsp;<span className="hidden md:flex ">pedido</span>{" "}
+              Nuevo&nbsp;<span className="hidden md:flex ">cliente</span>{" "}
             </p>
           </div>
         </div>
