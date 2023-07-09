@@ -17,7 +17,7 @@ const CardOrder = ({
   return (
     <div>
       <div
-        className="bg-gray-300 hover:bg-white rounded py-4 cursor-pointer"
+        className=" bg-white rounded py-4 cursor-pointer"
         onClick={openOrderModal}
       >
         <img

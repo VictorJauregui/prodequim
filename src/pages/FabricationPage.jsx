@@ -13,19 +13,36 @@ const FabricationPage = () => {
   return (
     <div className="bg-primary min-h-screen pb-20">
       <Menu />
-      {productosFiltrados.map((product) => {
-        const cantidad = productsToBeBuilt.find((filterProduct) => {
-          return filterProduct.producto === product.product;
-        });
+      <div className='flex mt-10 text-xl px-10 md:px-20'>
+        <p className="text-white">Fabricación</p>
+      </div>
+      <div className="grid lg:grid-cols-2 2xl:grid-cols-3 gap-6 w-full px-10 md:px-20 mt-6 ">
         
-        return (
-          <>
-            <img src={product.image} alt="" />
-            <p>{product.product}</p>
-            <p>Total a producir: {cantidad.cantidad * 5} Litros</p>
-          </>
-        );
-      })}
+          {productosFiltrados.map((product) => {
+            const cantidad = productsToBeBuilt.find((filterProduct) => {
+              return filterProduct.producto === product.product;
+            });
+            return (
+              <div className=" flex bg-white border border-r rounded p-2" >
+                <img className="w-28" src={product.image} alt="" />
+                <div>
+                  <div className="flex flex-col">
+                    <p className="font-bold text-lg sm:text-2xl text-primary border-b border-primary w-full">{product.product}</p>
+                    <div className="flex flex-col  h-full mt-3">
+                      <p className="font-normal sm:text-xl text-primary">Total cajas pedidas: <span className="font-bold">{cantidad.cantidad / 4} Cajas</span> </p>
+                      <p className="font-normal sm:text-xl text-primary">Total a producir: <span className="font-bold">{cantidad.cantidad * 5} Litros</span> </p>
+                    </div>
+                  </div>
+
+                </div>
+
+              </div>
+            );
+          })}
+
+        
+
+      </div>
     </div>
   );
 };

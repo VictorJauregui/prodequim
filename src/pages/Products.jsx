@@ -14,7 +14,7 @@ const Products = () => {
     <div className='bg-primary min-h-screen pb-20'>
       <Menu />
       <div className='flex mt-10 text-xl mx-10 md:mx-20'>
-        <p className='text-white w-[10%] cursor-pointer'>Productos</p>
+        <p className='text-white w-[10%]'>Productos</p>
         <div className='w-full flex justify-end '>
           <div className='flex justify-center px-2 bg-secondary rounded h-[2rem] items-center text-primary font-bold cursor-pointer gap-2' onClick={()=>setOpenModalNewProduct(true)}>
             <img className='w-5' src={plus} alt="" />
