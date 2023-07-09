@@ -13,7 +13,7 @@ const ModalNewOrder = ({setopenModalOrder}) => {
     finished: false
   })
 
-  console.log(dataProducts)
+
 
   
   const handleAddProducto = (e) => {
@@ -43,6 +43,7 @@ const ModalNewOrder = ({setopenModalOrder}) => {
     const handleFinishOrder = (e) => {
         e.preventDefault()
         newOrderByServidor(newOrder)
+        setopenModalOrder(false)
     }
 
   return (

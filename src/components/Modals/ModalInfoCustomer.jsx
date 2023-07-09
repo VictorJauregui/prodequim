@@ -4,7 +4,7 @@ import eljamon from '../../assets/eljamon.png'
 
 const ModalInfoCustomer = ({setOpenInfoModal, currentCustomer}) => {
 
-    console.log(currentCustomer)
+
   return (
     <div>
       <div className="fixed inset-0 overflow-y-auto bg-black/70 z-30">
