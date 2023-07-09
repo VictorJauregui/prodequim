@@ -22,7 +22,7 @@ const ModalDeleteOrder = ({setOpenModalDelete, order, setopenModal}) => {
           </p>
           <div className="flex items-center justify-center gap-6 w-full mr-4 my-6">
             <button
-              className="bg-gray-500 py-2 px-5 rounded text-white"
+              className="bg-gray-200 border border-gray-400 py-2 px-5 rounded text-gray-400"
               onClick={()=> setOpenModalDelete(false)}
             >
               Cancelar

@@ -56,7 +56,7 @@ const ModalNewCustomer = ({setOpenModal}) => {
         <div className="flex items-center justify-center min-h-screen ">
           <div className="flex flex-col p-6 bg-white border-2 border-secondary rounded-lg shadow-lg w-[90%] sm:w-2/3 md:w-3/5 xl:w-1/2 2xl:w-2/5">
           <div className="flex ml-4 mb-4">
-              <p className="text-2xl font-bold w-1/2 text-primary">NUEVO CLIENTE</p>
+              <p className="text-2xl font-extrabold w-5/6 text-primary">NUEVO CLIENTE</p>
               <div className="flex justify-end w-1/2">
                 <img className="w-4 h-4  mx-2 cursor-pointer" src={close} onClick={()=>setOpenModal(false)} alt="" />
               </div>
@@ -100,8 +100,8 @@ const ModalNewCustomer = ({setOpenModal}) => {
                         onChange={handleInputChange}  />
                     </div>
                 </div>
-                <div className='flex w-full' >
-                    <label className='w-2/5' >
+                <div className='sm:flex w-full ' >
+                    <label className=' sm:4/5 md:w-3/5 lg:w-2/5 ' >
                         <p className='font-bold text-lg text-primary mt-4'>Logo de la empresa</p>
                         {
                             !previewImg ?
@@ -118,7 +118,7 @@ const ModalNewCustomer = ({setOpenModal}) => {
                           </div>
                         }
                     </label>
-                    <div className='w-3/5 flex items-end justify-end '>
+                    <div className='sm:w-3/5 flex items-end justify-end mt-6 sm:mt-0 '>
                         <button type="submit" className='px-5 py-2 bg-primary rounded text-white' onClick={(e)=>handleSubmit(e)}>Finalizar registro</button>
                     </div>
                 </div>

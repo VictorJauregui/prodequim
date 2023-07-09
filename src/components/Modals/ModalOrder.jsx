@@ -33,10 +33,10 @@ const ModalOrder = ({ setopenModal, order, orderFinished, setCurrentOrder, isFin
             </div>
             <div className="flex w-full">
               <div className="w-1/2 m-4">
-                <p className="text-4xl font-bold text-primary">
+                <p className=" text-2xl sm:text-4xl font-extrabold text-primary">
                   {order.customerId.customer}
                 </p>
-                <p className="font-bold text-gray-500 mt-2">
+                <p className="sm:font-bold text-gray-500 mt-2">
                   Fecha pedido:{" "}
                   <span>{new Date(order.createdAt).toLocaleDateString()}</span>
                 </p>
@@ -68,12 +68,12 @@ const ModalOrder = ({ setopenModal, order, orderFinished, setCurrentOrder, isFin
                 <div>
                   <img className="max-h-28" src={logoTransparent} alt="" />
                 </div>
-                <div className="flex items-center justify-end gap-6 w-full mr-4">
+                <div className="flex items-center justify-end gap-2 md:gap-6 w-full mr-4">
                   <button className="bg-red-500 py-2 px-5 rounded text-white" onClick={HandleDeleteOrder}>
                     Eliminar
                   </button>
                   <button
-                    className="bg-green-600 py-2 px-5 rounded text-white"
+                    className="bg-primary py-2 px-5 rounded text-white"
                     onClick={handleFinishOrder}
                   >
                     Finalizar

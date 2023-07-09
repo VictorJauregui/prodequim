@@ -52,7 +52,7 @@ const ModalNewOrder = ({setopenModalOrder}) => {
         <div className="flex items-center justify-center min-h-screen ">
           <div className="flex flex-col bg-white border-2 border-secondary rounded-lg shadow-lg w-[90%] sm:w-2/3 md:w-3/5 xl:w-1/2 2xl:w-2/5">
             <div className="flex m-4">
-              <p className="text-2xl font-bold w-1/2 text-primary">NUEVO PEDIDO</p>
+              <p className="text-2xl font-extrabold w-2/3 text-primary">NUEVO PEDIDO</p>
               <div className="flex justify-end w-1/2">
                 <img onClick={()=>setopenModalOrder(false)} className="w-4 h-4  mx-2 cursor-pointer" src={close} alt="" />
               </div>
@@ -72,12 +72,12 @@ const ModalNewOrder = ({setopenModalOrder}) => {
                 }
                 </select>
                 <p className="text-primary font-bold mt-6 text-xl">Pedido</p>
-                <div className="flex w-full mx-5 mt-5 gap-2">
-                  <p className="w-[85%] text-primary">Producto</p>
-                  <p className="w-[15%] text-primary">Cantidad</p>
+                <div className="flex w-full lg:mx-5 mt-5 gap-2 ">
+                  <p className="w-[80%] text-primary">Producto</p>
+                  <p className="w-[15%] flex text-primary">Cant<span className='hidden sm:flex'>idad</span></p>
                 </div>
                 {productos.map((producto, index) => (
-                  <div className="flex w-full ml-5 mt-5 gap-2" key={index}>
+                  <div className="flex w-full lg:ml-5 mt-5 gap-2" key={index}>
                     <select
                       className="w-[84%] border-b border-gray-400 focus:outline-none"
                       type="text"
@@ -94,7 +94,7 @@ const ModalNewOrder = ({setopenModalOrder}) => {
                       }
                     </select>
                     <input
-                      className="w-[10%] mr-5 border-b border-gray-400 focus:outline-none"
+                      className="w-[16%] mr-5 border-b border-gray-400 focus:outline-none"
                       type="text"
                       placeholder="144"
                       value={producto.cantidad}
@@ -104,7 +104,7 @@ const ModalNewOrder = ({setopenModalOrder}) => {
                 ))}
                     <div className="flex justify-center">
                     <button
-                        className="border-2 border-secondary hover:bg-secondary my-4 rounded px-4 py-2 font-semibold text-primary"
+                        className="border-2 border-secondary hover:bg-secondary my-10 lg:my-4 rounded px-4 py-2 font-semibold text-primary"
                         name="añadir"
                         onClick={handleAddProducto}>Añadir producto</button>
                     </div>

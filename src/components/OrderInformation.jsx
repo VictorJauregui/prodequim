@@ -36,8 +36,8 @@ const OrderInformation = ({ orde, order, setCurrentOrder, isFinished }) => {
         })
         .map((product) => {
           return (
-            <div className="flex border-b border-gray-300 py-2  w-full items-center">
-              <img className="w-12" src={product.image} alt="" />
+            <div className="flex border-b border-gray-300 py-2 gap-3  w-full items-center">
+              <img className="hidden sm:flex w-12" src={product.image} alt="" />
               <p className=" w-3/5">{product.product}</p>
               <p className="w-1/5">{orde.cantidad}</p>
               {isFinished ? (
@@ -66,7 +66,7 @@ const OrderInformation = ({ orde, order, setCurrentOrder, isFinished }) => {
                     src={finishDone}
                     alt="finished"
                   />
-                  <p>Terminado</p>
+                  <p className="hidden md:flex">Terminado</p>
                 </div>
               )}
             </div>
