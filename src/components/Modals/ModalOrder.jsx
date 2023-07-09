@@ -54,7 +54,7 @@ const ModalOrder = ({ setopenModal, order, orderFinished, setCurrentOrder, isFin
             </p>
             <div className="bg-gray-200 mx-4 rounded mt-2 p-4 mb-10">
               <div className="flex w-full font-semibold text-primary mb-4 ">
-                <p className="w-3/5">Producto</p>
+                <p className="w-3/5 sm:w-[80%]">Producto</p>
                 <p className="w-2/5">Cantidad</p>
               </div>
               <div className=" w-full  text-primary py-2  items-center">
