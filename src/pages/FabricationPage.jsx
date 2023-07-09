@@ -23,11 +23,13 @@ const FabricationPage = () => {
               return filterProduct.producto === product.product;
             });
             return (
-              <div className=" flex bg-white border border-r rounded p-2 items-center" >
-                <img className="w-16  sm:w-28" src={product.image} alt="" />
+              <div className="flex flex-col sm:flex sm:flex-row justify-center sm:justify-start bg-white border border-r rounded p-2 items-center" >
+                <img className="w-28  sm:w-28" src={product.image} alt="" />
                 <div>
                   <div className="flex flex-col">
-                    <p className="font-bold text-lg sm:text-2xl text-primary border-b border-primary w-full">{product.product}</p>
+                    <div className="border-b border-primary w-full ">
+                      <p className="font-bold  text-xl sm:text-2xl text-primary  w-full">{product.product}</p>
+                    </div>
                     <div className="flex flex-col  h-full mt-3">
                       <p className="font-normal sm:text-xl text-primary">Total cajas pedidas: <span className="font-bold">{cantidad.cantidad / 4} Cajas</span> </p>
                       <p className="font-normal sm:text-xl text-primary">Total a producir: <span className="font-bold">{cantidad.cantidad * 5} Litros</span> </p>
