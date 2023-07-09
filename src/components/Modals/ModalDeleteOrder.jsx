@@ -12,7 +12,6 @@ const ModalDeleteOrder = ({setOpenModalDelete, order, setopenModal}) => {
      toast.success(`El pedido de ${order.customer} ha sido borrado con éxito`)
   }
 
-  console.log(order)
   return (
     <div>
     <div className="fixed inset-0 overflow-y-auto bg-black/70 z-30">
