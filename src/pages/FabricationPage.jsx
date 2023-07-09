@@ -23,8 +23,8 @@ const FabricationPage = () => {
               return filterProduct.producto === product.product;
             });
             return (
-              <div className=" flex bg-white border border-r rounded p-2" >
-                <img className="w-28" src={product.image} alt="" />
+              <div className=" flex bg-white border border-r rounded p-2 items-center" >
+                <img className="w-16  sm:w-28" src={product.image} alt="" />
                 <div>
                   <div className="flex flex-col">
                     <p className="font-bold text-lg sm:text-2xl text-primary border-b border-primary w-full">{product.product}</p>
