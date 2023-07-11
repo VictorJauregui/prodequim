@@ -28,7 +28,7 @@ const CardOrder = ({
         />
         <img
           className="w-full max-h-32 px-8 py-6 border-b border-primary"
-          src={order.customerId.image}
+          src={order.customerId?.image}
           alt=""
         />
         <p className="text-sm text-primary ml-3 mt-3 font-bold">
